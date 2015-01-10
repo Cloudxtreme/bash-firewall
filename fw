@@ -2,7 +2,7 @@
 
 . ~/.firewall/functions
 
-CONFIG_FW="~/.fw/rules-fw"
+CONFIG_FW="~/.fw/rules"
 
 if [[ ! -f $CONFIG_FW ]]; then
   err "could not find $CONFIG_FW file"

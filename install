@@ -3,8 +3,9 @@
 echo "export PATH=\"$HOME/.firewall:\$PATH\"" >> ~/.bashrc
 
 mkdir ~/.fw
-echo "<<EOS
-# $WAN is connected to the internet.
+
+cat > ~/.fw/rules-fw <<EOS
+# \$WAN is connected to the internet.
 IPT=/sbin/iptables
 TARGET="/etc/iptables/rules.v4" # if called with '--save'
 PRIVATE="10.0.3.0/24"
@@ -20,8 +21,8 @@ save_rules=false
 
 function rules {
   # Allow local loopback
-  ipt -A INPUT -s $LOOP -j ACCEPT
-  ipt -A INPUT -d $LOOP -j ACCEPT
+  ipt -A INPUT -s \$LOOP -j ACCEPT
+  ipt -A INPUT -d \$LOOP -j ACCEPT
 
   # open to the whole world
   ipt -N input_new
@@ -30,6 +31,6 @@ function rules {
   open_port tcp 22
 
 }
-EOS" > ~/.fw/rules-fw
+EOS
 
 echo "complete."

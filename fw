@@ -1,0 +1,22 @@
+#!/bin/bash
+
+. ~/.firewall/functions
+
+if [[ ! -f ~/rules-fw ]]; then
+  err "could not find ~/rules-fw file"
+  exit 1
+fi
+
+. ~/rules-fw
+
+
+if [[ ${1:-} ]] && declare -F | cut -d' ' -f3 | fgrep -qx -- "${1:-}"
+then
+  case "$1" in
+    -h|--help|test|save) : ;;
+    *) ;;
+  esac
+  "$@"
+else
+  main "$@"
+fi

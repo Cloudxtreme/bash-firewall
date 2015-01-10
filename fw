@@ -2,12 +2,14 @@
 
 . ~/.firewall/functions
 
-if [[ ! -f ~/rules-fw ]]; then
-  err "could not find ~/rules-fw file"
+CONFIG_FW="~/.fw/rules-fw"
+
+if [[ ! -f $CONFIG_FW ]]; then
+  err "could not find $CONFIG_FW file"
   exit 1
 fi
 
-. ~/rules-fw
+. "$CONFIG_FW"
 
 
 if [[ ${1:-} ]] && declare -F | cut -d' ' -f3 | fgrep -qx -- "${1:-}"

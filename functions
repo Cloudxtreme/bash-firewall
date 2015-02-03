@@ -87,7 +87,9 @@ function main {
       *)                    err 'Argument error. Please see help: -h' ;;
     esac
   done
-
+  if [[ $test_run == true ]]; then
+    msg "### DRY RUN, COMMANDS TO BE APPLIED: ###"
+  fi
   clean
   rules
   if [[ $test_run != true ]]; then
@@ -96,6 +98,9 @@ function main {
     msg "### END RULES ###"
   fi
   save
+  if [[ $test_run == true ]]; then
+    msg "### CHECK IT CAREFULLY ###"
+  fi
 }
 
 function clean {

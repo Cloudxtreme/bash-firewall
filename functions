@@ -91,9 +91,9 @@ function main {
   clean
   rules
   if [[ $test_run != true ]]; then
-    msg "#### FIREWALL RULES PREVIEW ###"
+    msg "#### APPLIED FIREWALL RULES ###"
     print_all
-    msg "### READ IT CAREFULLY ###"
+    msg "### END RULES ###"
   fi
   save
 }

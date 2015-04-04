@@ -33,4 +33,6 @@ function rules {
 }
 EOS
 
+source ~/.bashrc
+
 echo "complete."

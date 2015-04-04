@@ -2,7 +2,7 @@
 
 echo "export PATH=\"$HOME/.firewall:\$PATH\"" >> ~/.bashrc
 
-mkdir ~/.fw
+mkdir -p ~/.fw
 
 cat > ~/.fw/rules <<EOS
 # \$WAN is connected to the internet.

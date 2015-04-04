@@ -2,11 +2,13 @@
 
 . ~/.firewall/functions
 
-CONFIG_FW="/root/.fw/rules"
+CONFIG_FW="/root/.fw/$(hostname)-rules"
 
 if [[ ! -f "$CONFIG_FW" ]]; then
   err "could not find $CONFIG_FW file"
   exit 1
+else
+  msg "using config $CONFIG_FW"
 fi
 
 source "$CONFIG_FW"

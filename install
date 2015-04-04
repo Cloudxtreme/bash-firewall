@@ -1,10 +1,11 @@
 #!/bin/bash
 
 echo "export PATH=\"$HOME/.firewall:\$PATH\"" >> ~/.bashrc
+fwdir="~/.fw"
+mkdir -p $fwdir
+fwconfig="${fwdir}/$(hostname)-rules"
 
-mkdir -p ~/.fw
-
-cat > ~/.fw/rules <<EOS
+cat > $fwconfig <<EOS
 # \$WAN is connected to the internet.
 IPT=/sbin/iptables
 TARGET="/etc/iptables/rules.v4" # if called with '--save'

@@ -45,6 +45,10 @@ function cont_nat {
     err "invalid number of arguments, expected 2 or 3"
     exit 1
   fi
+  if [ -z "$PUBLIC_IP" ]; then
+    err "PUBLIC_IP variable is not set!";
+  fi
+
   iptn -A PREROUTING -p tcp -m tcp -d $PUBLIC_IP --dport $2 -j DNAT --to-destination $dest
   iptn -A OUTPUT -p tcp -m tcp -d $PUBLIC_IP --dport $2 -j DNAT --to-destination $dest
 }
